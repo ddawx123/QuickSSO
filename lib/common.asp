@@ -1,6 +1,7 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001"%>
 <%Session.CodePage=65001%>
 <!--#include virtual="inc/config.inc.asp"-->
+<!--#include virtual="lib/md5.lib.asp"-->
 <!--#include virtual="lib/jsonObject.class.asp"-->
 <%
 Function Fetch_API(code, message, data)

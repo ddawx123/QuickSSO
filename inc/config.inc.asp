@@ -1,11 +1,10 @@
 <%
 Session.Timeout=60
-Dim dbFile
+dbPath = Server.MapPath(".") & "\dat\Database.accdb"
+dbPswd = "201812151210"
 
-dbFile = "C:\Users\dingstudio\source\repos\QuickSSO\dat\Database.mdb"
-
+connStr = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" & dbPath & "; Persist Security Info=False;Jet OLEDB:Database Password=" & dbPswd
 Set conn = Server.CreateObject("ADODB.Connection")
-conn.Provider = "Microsoft.Jet.OLEDB.4.0"
-conn.Open dbFile
+conn.Open connStr
 Set rs = Server.CreateObject("ADODB.recordset")
 %>
