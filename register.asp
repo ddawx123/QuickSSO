@@ -6,9 +6,11 @@ If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
         sqlcode = "select * from member where account='" & Request.Form("username") & "'"
         rs.Open sqlcode, conn
         If rs.EOF = False Then Response.Write "<script>alert('用户名已存在，请换一个更有创意的名字吧！');history.go(-1);</script>" : Response.End
+        rs.Close
         sqlcode = "insert into member (account,password) values ('" & Request.Form("username") & "','" & MD5(Request.Form("password"),false) & "')"
         rs.Open sqlcode, conn
         If rs.EOF Then Response.Write "<script>alert('数据操作超时，注册可能失败。');history.go(-1);</script>" : Response.End
+        rs.Close
         Response.Write "<script>alert('用户注册成功！');window.top.location.href = './authorize.asp';</script>" : Response.End
     End If
 End If
