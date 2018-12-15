@@ -9,7 +9,8 @@ If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
         sqlcode = "insert into member (account,password) values ('" & Request.Form("username") & "','" & MD5(Request.Form("password"),false) & "')"
         rs.Open sqlcode, conn
         If rs.EOF Then Response.Write "<script>alert('数据操作超时，注册可能失败。');history.go(-1);</script>" : Response.End
-        Response.Write "<script>alert('用户注册成功！');history.go(-1);</script>" : Response.End
+        Response.Write "<script>alert('用户注册成功！');window.top.location.href = './authorize.asp';</script>" : Response.End
     End If
 End If
 %>
+<!--#include virtual="tpl/register.tpl.htm"-->
